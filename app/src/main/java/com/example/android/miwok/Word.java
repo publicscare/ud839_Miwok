@@ -3,6 +3,14 @@ package com.example.android.miwok;
 public class Word {
     private String mMiwokTranslation;
     private String mDefaultTranslation;
+    private int mImageResourceId = NO_IMAGE_PROVIDED;
+    private int mAudioResourceId = NO_AUDIO_PROVIDED;
+
+    /** Constant value that represents no image was provided for this word */
+    private static final int NO_IMAGE_PROVIDED = -1;
+
+    /** Constant value that represents no audio was provided for this word */
+    private static final int NO_AUDIO_PROVIDED = -1;
 
     /**
      * Create a new Word object.
@@ -14,6 +22,41 @@ public class Word {
     public Word(String defaultTranslation, String miwokTranslation) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
+    }
+
+    /**
+     * Create a new Word object.
+     *
+     * @param defaultTranslation is the word in a language that the user is already familiar with
+     *                           (such as English)
+     * @param miwokTranslation is the word in the Miwok language
+     *
+     * @param imageResourceId is the integer representation of the image resource id that is
+     *                        associated with the word.
+     */
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId) {
+        mDefaultTranslation = defaultTranslation;
+        mMiwokTranslation = miwokTranslation;
+        mImageResourceId = imageResourceId;
+    }
+
+    /**
+     * Create a new Word object.
+     *
+     * @param defaultTranslation is the word in a language that the user is already familiar with
+     *                           (such as English)
+     * @param miwokTranslation is the word in the Miwok language
+     *
+     * @param imageResourceId is the integer representation of the image resource id that is
+     *                        associated with the word.
+     * @param audioResourceId is the integer representation of the image resource id that is
+     *                        associated with the word
+     */
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId, int audioResourceId) {
+        mDefaultTranslation = defaultTranslation;
+        mMiwokTranslation = miwokTranslation;
+        mImageResourceId = imageResourceId;
+        mAudioResourceId = audioResourceId;
     }
 
     /**
@@ -30,5 +73,33 @@ public class Word {
         return mMiwokTranslation;
     }
 
+    /**
+     * Get the Miwok image of the word.
+     */
+    public int getImageResourceId() {
+        return mImageResourceId;
+    }
 
+    /**
+     * Returns whether or not there is an image for this word.
+     */
+    public boolean hasImage() {
+        return mImageResourceId != NO_IMAGE_PROVIDED;
+    }
+
+    /**
+     * Returns whether or not there is an image for this word.
+     */
+    public boolean hasAudio() {
+        return mAudioResourceId != NO_AUDIO_PROVIDED;
+    }
+
+    /**
+     *
+     * @return mAudioResourceId
+     */
+    public int getAudioResourceId() {
+        return mAudioResourceId;
+    }
 }
+

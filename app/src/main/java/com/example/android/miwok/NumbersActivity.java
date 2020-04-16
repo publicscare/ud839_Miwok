@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
     private MediaPlayer mMediaPlayer;
+
     /**
      * Clean up the media player by releasing its resources.
      */
@@ -28,6 +29,7 @@ public class NumbersActivity extends AppCompatActivity {
             mMediaPlayer = null;
         }
     }
+
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mediaPlayer) {
@@ -35,6 +37,23 @@ public class NumbersActivity extends AppCompatActivity {
             releaseMediaPlayer();
         }
     };
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // When the activity is stopped, release the media player resources because we won't
+        // be playing any more sounds.
+        releaseMediaPlayer();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // When the activity is stopped, release the media player resources because we won't
+        // be playing any more sounds.
+        releaseMediaPlayer();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +74,7 @@ public class NumbersActivity extends AppCompatActivity {
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
-        final WordAdapter adapter = new WordAdapter(this, words,R.color.category_numbers);
+        final WordAdapter adapter = new WordAdapter(this, words, R.color.category_numbers);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the

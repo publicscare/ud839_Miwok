@@ -44,6 +44,7 @@ public class FamilyActivity extends AppCompatActivity {
             mMediaPlayer = null;
         }
     }
+
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mediaPlayer) {
@@ -51,6 +52,22 @@ public class FamilyActivity extends AppCompatActivity {
             releaseMediaPlayer();
         }
     };
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // When the activity is stopped, release the media player resources because we won't
+        // be playing any more sounds.
+        releaseMediaPlayer();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // When the activity is stopped, release the media player resources because we won't
+        // be playing any more sounds.
+        releaseMediaPlayer();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +106,7 @@ public class FamilyActivity extends AppCompatActivity {
                 //Toast.makeText(NumbersActivity.this, "List item clicked", Toast.LENGTH_SHORT);
                 releaseMediaPlayer();
                 Word word = words.get(position);
-                mMediaPlayer = MediaPlayer.create(FamilyActivity.this,word.getAudioResourceId());
+                mMediaPlayer = MediaPlayer.create(FamilyActivity.this, word.getAudioResourceId());
                 mMediaPlayer.start();
                 mMediaPlayer.setOnCompletionListener(mCompletionListener);
             }

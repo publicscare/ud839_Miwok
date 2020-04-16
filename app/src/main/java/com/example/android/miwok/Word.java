@@ -6,10 +6,14 @@ public class Word {
     private int mImageResourceId = NO_IMAGE_PROVIDED;
     private int mAudioResourceId = NO_AUDIO_PROVIDED;
 
-    /** Constant value that represents no image was provided for this word */
+    /**
+     * Constant value that represents no image was provided for this word
+     */
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    /** Constant value that represents no audio was provided for this word */
+    /**
+     * Constant value that represents no audio was provided for this word
+     */
     private static final int NO_AUDIO_PROVIDED = -1;
 
     /**
@@ -17,7 +21,7 @@ public class Word {
      *
      * @param defaultTranslation is the word in a language that the user is already familiar with
      *                           (such as English)
-     * @param miwokTranslation is the word in the Miwok language
+     * @param miwokTranslation   is the word in the Miwok language
      */
     public Word(String defaultTranslation, String miwokTranslation) {
         mDefaultTranslation = defaultTranslation;
@@ -29,10 +33,9 @@ public class Word {
      *
      * @param defaultTranslation is the word in a language that the user is already familiar with
      *                           (such as English)
-     * @param miwokTranslation is the word in the Miwok language
-     *
-     * @param imageResourceId is the integer representation of the image resource id that is
-     *                        associated with the word.
+     * @param miwokTranslation   is the word in the Miwok language
+     * @param imageResourceId    is the integer representation of the image resource id that is
+     *                           associated with the word.
      */
     public Word(String defaultTranslation, String miwokTranslation, int imageResourceId) {
         mDefaultTranslation = defaultTranslation;
@@ -45,12 +48,11 @@ public class Word {
      *
      * @param defaultTranslation is the word in a language that the user is already familiar with
      *                           (such as English)
-     * @param miwokTranslation is the word in the Miwok language
-     *
-     * @param imageResourceId is the integer representation of the image resource id that is
-     *                        associated with the word.
-     * @param audioResourceId is the integer representation of the image resource id that is
-     *                        associated with the word
+     * @param miwokTranslation   is the word in the Miwok language
+     * @param imageResourceId    is the integer representation of the image resource id that is
+     *                           associated with the word.
+     * @param audioResourceId    is the integer representation of the image resource id that is
+     *                           associated with the word
      */
     public Word(String defaultTranslation, String miwokTranslation, int imageResourceId, int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
@@ -95,7 +97,6 @@ public class Word {
     }
 
     /**
-     *
      * @return mAudioResourceId
      */
     public int getAudioResourceId() {
